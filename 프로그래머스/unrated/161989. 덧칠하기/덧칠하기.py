@@ -7,7 +7,6 @@ def solution(n, m, section):
         j = i+1
         while (j < section_num) and (section[j]-section[i]+1 <= m):
             j += 1
-    
         answer += 1
         i = j
  
