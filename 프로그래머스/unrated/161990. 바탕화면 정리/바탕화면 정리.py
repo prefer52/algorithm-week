@@ -1,6 +1,6 @@
 def find_file(wall, start, end, step):
     for i in range(start, end, step):
-        if wall[i].count('#') > 0: return i
+        if '#' in wall[i]: return i
 
 def solution(wallpaper):
     col = list(zip(*wallpaper))
