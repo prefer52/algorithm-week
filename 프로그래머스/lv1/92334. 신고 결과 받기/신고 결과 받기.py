@@ -1,10 +1,8 @@
 def solution(id_list, report, k):
-    report_set = set(report)
     dict_report = {}
-    for i in report_set:
+    for i in set(report):
         userID, reportID = tuple(i.split())
-        if reportID in dict_report: dict_report[reportID].append(userID)
-        else: dict_report[reportID] = [userID]
+        dict_report[reportID] = dict_report[reportID] + [userID] if reportID in dict_report else [userID]
     
     result = [0]*len(id_list)
     for i in list(dict_report.values()):
