@@ -6,10 +6,10 @@ def solution(today, terms, privacies):
     
     for i, info in enumerate(privacies):
         date, cla = info.split()
-        y, m, d = map(int, str(date).split('.'))
+        y, m, d = map(int, date.split('.'))
         days = y*12*28 + (m-1)*28 + d + clause[cla]*28
         y, m = divmod(days, (12*28))
         m, d = divmod(m , 28)
         if day_sum >= y*10000+m*100+d: result.append(i+1)
-            
+        
     return result
