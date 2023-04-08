@@ -20,5 +20,4 @@ def solution(maps):
                         if maps[x+a][y+b] > 0: stack.append((x+a, y+b))
                 result.append(days)
     
-    if len(result) == 0: return [-1]
-    else: return sorted(result)
+    return sorted(result) if result else [-1]
