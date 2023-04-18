@@ -1,7 +1,6 @@
 from sys import stdin
 
-log = int(stdin.readline())
-dic = {'enter':set()}
+log, dic = int(stdin.readline()), {'enter':set()}
 for i in range(log):
     name, work = stdin.readline().split()
     if work == 'leave' and name in dic['enter']:
