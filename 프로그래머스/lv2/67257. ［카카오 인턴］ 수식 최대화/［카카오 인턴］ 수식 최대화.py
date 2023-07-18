@@ -12,7 +12,7 @@ def solution(expression):
         if i in op:
             op_only += i
 
-    max, prior_list = 0, list(itertools.permutations(op, 3))
+    result_list, prior_list = [], list(itertools.permutations(op, 3))
     for case in prior_list:
         num_list, op_list = num_only[:], op_only[:]
         for i in case:
@@ -21,6 +21,5 @@ def solution(expression):
                 num_list[index] = eval(str(num_list[index]) + i + str(num_list[index+1]))
                 del num_list[index+1]
                 op_list = op_list.replace(i, '', 1)
-        if abs(int(num_list[0])) > max:
-            max = abs(int(num_list[0]))
-    return max
+        result_list.append(abs(int(num_list[0])))
+    return max(result_list)
