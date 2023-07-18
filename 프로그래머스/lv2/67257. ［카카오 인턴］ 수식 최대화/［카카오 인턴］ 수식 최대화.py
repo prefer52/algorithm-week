@@ -4,17 +4,15 @@ from collections import deque
 def solution(expression):
     op = ['+', '-', '*']
     num_only, op_only = expression[:], ''
-    
     for i in op:
         num_only = num_only.replace(i, ' ')
-    num_only = num_only.split()
     for i in expression:
         if i in op:
             op_only += i
 
     result_list, prior_list = [], list(itertools.permutations(op, 3))
     for case in prior_list:
-        num_list, op_list = num_only[:], op_only[:]
+        num_list, op_list = num_only.split(), op_only[:]
         for i in case:
             while op_list.find(i) != -1:
                 index = op_list.find(i)
