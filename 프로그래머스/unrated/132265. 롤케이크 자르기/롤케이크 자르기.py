@@ -1,13 +1,14 @@
 def solution(topping):
     result = 0
-    left_set, right_set = set(), set()
+    topping_set = set()
     left_bread, right_bread = [], []
     for i in topping:
-        left_set.add(i)
-        left_bread.append(len(left_set))
+        topping_set.add(i)
+        left_bread.append(len(topping_set))
+    topping_set.clear()
     for i in list(reversed(topping)):
-        right_set.add(i)
-        right_bread.append(len(right_set))
+        topping_set.add(i)
+        right_bread.append(len(topping_set))
     right_bread.reverse()
     for i in range(0, len(topping)-1):
         if left_bread[i] == right_bread[i+1]:
