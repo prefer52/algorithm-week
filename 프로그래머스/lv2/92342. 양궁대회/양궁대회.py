@@ -2,26 +2,23 @@ from itertools import combinations_with_replacement
 from collections import Counter
 
 def solution(n, info):
-    appeach_sum = 0
+    score_up, score_down = range(11), range(11)[::-1]
+    appeach_sum = sum([10-i for i in score_up if info[i]])
     result = []
-    for i in range(11):
-        if info[i]:
-            appeach_sum += 10-i
-    cwrs = combinations_with_replacement(range(11), n)
-    cwrs_counter = ((Counter(cwr) for cwr in cwrs))
+    cwrs = combinations_with_replacement(score_up, n)
+    count = (Counter(cwr) for cwr in cwrs)
     
-    for cwr in cwrs_counter:
-        appeach_score = appeach_sum
-        lion_score = 0
+    for cwr in count:
+        appeach, lion = appeach_sum, 0
         for score in cwr:
             if cwr[score] > info[10-score]:
-                lion_score += score
+                lion += score
                 if info[10-score] > 0:
-                    appeach_score -= score
-        if lion_score > appeach_score:
-            result.extend([[lion_score-appeach_score, [cwr[10-i] for i in range(11)]]])
+                    appeach -= score
+        if lion > appeach:
+            result += [[lion-appeach, [cwr[10-i] for i in score_down]]]
+    
     if not result:
         return [-1]
     else:
-        result.sort(key=lambda x:-x[0])
-        return result[0][1]
+        return max(result)[1][::-1]
