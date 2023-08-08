@@ -1,2 +1,2 @@
-# algorithm-day
-하루에 하나씩
+# algorithm-week
+주에 하나이상...
