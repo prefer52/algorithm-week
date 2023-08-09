@@ -8,11 +8,8 @@ def solution(dirs):
         for i in range(2):
             if abs(pos[i] + move[dir][i]) <= 5:
                 pos[i] += move[dir][i]
-        if cur_pos == pos:
-            continue
-        path_set.add(tuple(cur_pos + pos))
-        path_set.add(tuple(pos + cur_pos))
+        if cur_pos != pos:
+            path_set.add(tuple(cur_pos + pos))
+            path_set.add(tuple(pos + cur_pos))
 
     return len(path_set)//2
-
-solution("LULLLLLLU")
