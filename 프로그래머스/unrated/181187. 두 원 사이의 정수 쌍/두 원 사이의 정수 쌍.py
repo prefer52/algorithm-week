@@ -15,6 +15,4 @@ def solution(r1, r2):
             r1_circle += int(y-1)
     r1_circle = r1_circle*4 + (r1-1)*4 + 1
     
-    print(r1_circle, r2_circle)
-    
     return r2_circle - r1_circle
