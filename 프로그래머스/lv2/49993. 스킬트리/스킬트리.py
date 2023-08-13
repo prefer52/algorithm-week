@@ -3,11 +3,10 @@ def solution(skill, skill_trees):
     for skill_tree in skill_trees:
         skills = list(skill)
         for spell in skill_tree:
-            if spell in skills:
-                if skills[0] == spell:
-                    skills.pop(0)
-                else:
-                    break
+            if skills and skills[0] == spell:
+                skills.pop(0)
+            elif spell in skills:
+                break
         else:
             result += 1
     return result
