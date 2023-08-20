@@ -1,6 +1,6 @@
 def solution(cards):
     card_dict = dict(enumerate(cards,1))
-    result = []
+    result = [0]
     for i in cards:
         if i in card_dict:
             box_num = 1
@@ -9,11 +9,6 @@ def solution(cards):
                 card = card_dict.pop(card)
                 box_num += 1
             result += [box_num]
-    max_value1 = max(result)
-    result.remove(max_value1)
-    if result:
-        max_value2 = max(result)
-        result.remove(max_value2)
-        return max_value1*max_value2
-    else:
-        return 0
+            
+    max_values = sorted(result, reverse=True)[0:2]
+    return max_values[0]*max_values[1]
