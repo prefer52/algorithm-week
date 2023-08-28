@@ -8,10 +8,7 @@ def solution(sequence, k):
         queue.append(i)
         while k < 0:
             k += queue.popleft()[1]
-
         if k == 0:
             result += [[len(queue), queue[0][0], queue[-1][0]]]
-            
-    result.sort(key=lambda x:(x[0], x[1]))
-    
-    return [result[0][1], result[0][-1]]
+
+    return min(result)[1:3]
