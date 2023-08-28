@@ -1,8 +1,7 @@
 from collections import deque
 
 def solution(sequence, k):
-    result = []
-    queue = deque()
+    result, queue = list(), deque()
     for i in enumerate(sequence):
         k -= i[1]
         queue.append(i)
