@@ -1,23 +1,23 @@
 from sys import stdin
 
 n = int(stdin.readline())
-aList = sorted(list(map(int, stdin.readline().split())))
+numbers = sorted(list(map(int, stdin.readline().split())))
 m = int(stdin.readline())
-finds = list(map(int, stdin.readline().split()))
-result = ''
+find_numbers = list(map(int, stdin.readline().split()))
 
-for find in finds:
-    start, end = 0, len(aList)-1
+result = []
+for find_number in find_numbers:
+    start, end, mid = 0, len(numbers) - 1, 0
     while start <= end:
-        mid = (start + end)//2
-        if aList[mid] == find:
-            result += '1'
+        mid = (start + end) // 2
+        if numbers[mid] == find_number:
+            result.append('1')
             break
-        elif aList[mid] > find:
-            end = mid-1
+        elif numbers[mid] > find_number:
+            end = mid - 1
         else:
             start = mid + 1
-    if start > end:
-        result += '0'
-
+    else:
+        result.append('0')
+        
 print('\n'.join(result))
