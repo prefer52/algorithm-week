@@ -1,19 +1,21 @@
 from sys import stdin
 
-m = int(input())
-S, result = 0, ''
-init = (1<<21) - 1
+m = int(stdin.readline())
+result, s = '', 0
 
 for i in range(m):
-    op = stdin.readline().split()
-    if len(op) == 2:
-        if op[0] == "add":
-            S |= 1 << int(op[1])
-        elif op[0] == "remove":
-            S &= ~(1 << int(op[1]))
-        elif op[0] == "check":
-            print(str(int((S & (1 << int(op[1]))) > 0)))
-        elif op[0] == "toggle":
-            S ^= 1 << int(op[1])
+    op = stdin.readline().strip().split()
+    
+    if op[0] == 'add':
+        s |= 1 << int(op[1])
+    elif op[0] == 'remove':
+        s &= ~(1 << int(op[1]))
+    elif op[0] == 'check':
+        if s & 1 << int(op[1]):
+            print('1')
+        else:
+            print('0')
+    elif op[0] == 'toggle':
+        s ^= 1 << int(op[1])
     else:
-        S = init if op[0] == 'all' else 0
+        s = 0b111111111111111111110 if op[0] == 'all' else 0
