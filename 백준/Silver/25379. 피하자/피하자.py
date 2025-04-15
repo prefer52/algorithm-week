@@ -4,21 +4,17 @@ seqs = list(map(int, input().split()))
 counts, count = [], 0
 
 even_seqs = seqs[:]
-even_first, switched = 0, False
+even_first = 0
+even_count = 0 if even_seqs[0]%2 != 0 else 1 # 누적된 짝수 개수
 for i in range(1, n): # 짝수를 앞으로
-    if even_seqs[i]%2 == 0:
-        for j in range(i-1, -1, -1):
-            if even_seqs[j]%2 == 0:
-                break
-            even_seqs[j], even_seqs[i] = even_seqs[i], even_seqs[j]
-            count += 1
+    if even_seqs[i]%2 == 0: # 만약 현재 수가 짝수이면
+        count += i - even_count
+        even_count += 1
 even_first, count = count, 0
-    
+
+odd_count = 0  if seqs[0]%2 == 0 else 1 # 누적된 홀수 개수
 for i in range(1, n):
-    if seqs[i]%2 != 0: # 홀수를 앞으로
-        for j in range(i-1, -1, -1):
-            if seqs[j]%2 != 0:
-                break
-            seqs[j], seqs[i] = seqs[i], seqs[j]
-            count += 1
+    if seqs[i]%2 != 0: # 만약 현재 수가 홀수이면
+        count += i - odd_count
+        odd_count += 1
 print(min(count, even_first))
