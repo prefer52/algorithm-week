@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.*;
 import java.io.*;
 
@@ -7,26 +8,28 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] dists = new int[n-1];
-        for (int i = 0; st.hasMoreTokens(); i++) {
+        long[] dists = new long[n-1];
+        for (int i = 0; i < n-1; i++) {
             dists[i] = Integer.parseInt(st.nextToken());
         }
 
         st = new StringTokenizer(br.readLine());
-        int[] costs = new int[n];
-        for (int i = 0; st.hasMoreTokens(); i++) {
+        long[] costs = new long[n];
+        for (int i = 0; i < n; i++) {
             costs[i] = Integer.parseInt(st.nextToken());
         }
 
-        int totalCost = costs[0] * dists[0], minCost = costs[0];
-
+        BigInteger totalCost = new BigInteger(String.valueOf(costs[0]*dists[0]));
+        long minCost = costs[0];
         for (int i = 1 ; i < n-1 ; i++) {
-            minCost = Math.min(minCost, costs[i]);
-            totalCost += dists[i]*minCost;
+            if (costs[i] < minCost) {
+                minCost = costs[i];
+            }
+            totalCost = totalCost.add(BigInteger.valueOf(dists[i]).multiply(BigInteger.valueOf(minCost)));
         }
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        bw.write(String.valueOf(totalCost));
+        bw.write(totalCost.toString());
         bw.flush();
     }
 }
