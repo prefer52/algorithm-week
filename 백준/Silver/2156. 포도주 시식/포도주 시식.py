@@ -2,7 +2,6 @@ from sys import stdin
 
 n = int(stdin.readline())
 grapes = [int(stdin.readline()) for _ in range(n)] + [0]
-grape_sum = sum(grapes)
 
 dp = [[0, 0] for _ in range(n+1)]
 for i in range(n):
