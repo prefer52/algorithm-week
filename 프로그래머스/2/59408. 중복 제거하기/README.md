@@ -1,6 +1,6 @@
 # [level 2] 중복 제거하기 - 59408 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/59408) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/59408?language=oracle) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@ Empty
 
 ### 제출 일자
 
-2025년 10월 15일 17:29:37
+2025년 11월 15일 10:54:08
 
 ### 문제 설명
 
